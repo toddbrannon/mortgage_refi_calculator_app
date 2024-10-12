@@ -20,153 +20,153 @@
               <div class="card-body">
 
                 <h4 class="mb-2">Basic Details</h4>
-                <div class="form-group mb-2 text-start">
-                  <label class="form-label">Borrower Name:</label>
+                <div class="form-group row mb-2">
+                  <label class="col-md-4 col-form-label text-md-end">Borrower Name:</label>
                   <input type="text" name="borrowerName" class="form-control" value="<%= row.borrowerName %>" required />
                 </div>
-                <div class="form-group mb-2 text-start">
-                  <label class="form-label">Current 1st Mortgage Balance:</label>
+                <div class="form-group row mb-2">
+                  <label class="col-md-4 col-form-label text-md-end">Current 1st Mortgage Balance:</label>
                   <div class="input-group">
                     <span class="input-group-text">$</span>
                     <input type="number" step="0.01" name="current1stMortgageBal" class="form-control" value="<%= row.current1stMortgageBal.toFixed(2) %>" required min="0" style="background-color: #ffa07a;" />
                   </div>
                 </div>
-                <div class="form-group mb-2 text-start">
-                  <label class="form-label">Current 1st Mortgage Rate:</label>
+                <div class="form-group row mb-2">
+                  <label class="col-md-4 col-form-label text-md-end">Current 1st Mortgage Rate:</label>
                   <div class="input-group">
                     <input type="number" step="0.01" name="current1stMtgRate" class="form-control" value="<%= row.current1stMtgRate %>" required min="0" max="100" style="background-color: #ffa07a;" />
                     <span class="input-group-text">%</span>
                   </div>
                 </div>
-                <div class="form-group mb-2 text-start">
-                  <label class="form-label"><u><i>Current P I T I 1st Mtg.</i></u>:</label>
+                <div class="form-group row mb-2">
+                  <label class="col-md-4 col-form-label text-md-end"><u><i>Current P I T I 1st Mtg.</i></u>:</label>
                   <div class="input-group">
                     <span class="input-group-text">$</span>
                     <input type="number" step="0.01" class="form-control" value="<%= row.currentPITI1stMtg.toFixed(2) %>" readonly style="background-color: #ffffe0;" />
                   </div>
                 </div>
-                <div class="form-group mb-2 text-start">
-                  <label class="form-label">Current P & I or IO Pymt 1st Mtg.:</label>
+                <div class="form-group row mb-2">
+                  <label class="col-md-4 col-form-label text-md-end">Current P & I or IO Pymt 1st Mtg.:</label>
                   <div class="input-group">
                     <span class="input-group-text">$</span>
                     <input type="number" step="0.01" class="form-control" value="<%= row.currentPandIorIOPayment.toFixed(2) %>" readonly style="background-color: #ffffe0;" />
                   </div>
                 </div>
-                <div class="form-group mb-2 text-start">
-                  <label class="form-label">Current Monthly Mortgage Ins (MI):</label>
+                <div class="form-group row mb-2">
+                  <label class="col-md-4 col-form-label text-md-end">Current Monthly Mortgage Ins (MI):</label>
                   <div class="input-group">
                     <span class="input-group-text">$</span>
                     <input type="number" step="0.01" class="form-control" value="<%= row.currentMonthlyMI ? row.currentMonthlyMI.toFixed(2) : '0.00' %>" readonly style="background-color: #ffffe0;" />
                   </div>
                 </div>
-                <div class="form-group mb-2 text-start">
-                  <label class="form-label">Current Annual Taxes:</label>
+                <div class="form-group row mb-2">
+                  <label class="col-md-4 col-form-label text-md-end">Current Annual Taxes:</label>
                   <div class="input-group">
                     <span class="input-group-text">$</span>
                     <input type="number" step="0.01" class="form-control" value="<%= row.currentAnnualTaxes ? row.currentAnnualTaxes.toFixed(2) : '0.00' %>" readonly style="background-color: #d3d3d3;" />
                   </div>
                 </div>
-                <div class="form-group mb-2 text-start">
-                  <label class="form-label">Current Annual Insurance:</label>
+                <div class="form-group row mb-2">
+                  <label class="col-md-4 col-form-label text-md-end">Current Annual Insurance:</label>
                   <div class="input-group">
                     <span class="input-group-text">$</span>
                     <input type="number" step="0.01" class="form-control" value="<%= row.currentAnnualInsurance ? row.currentAnnualInsurance.toFixed(2) : '0.00' %>" readonly style="background-color: #d3d3d3;" />
                   </div>
                 </div>
-                <div class="form-group mb-2 text-start">
-                    <label class="form-label">Current Ins Policy Eff. Date:</label>
+                <div class="form-group row mb-2">
+                    <label class="col-md-4 col-form-label text-md-end">Current Ins Policy Eff. Date:</label>
                     <input type="text" name="currentInsPolicyEffDate" class="form-control" />
                   </div>
-                  <div class="form-group mb-2 text-start">
-                    <label class="form-label">Current 2nd Mtg Bal:</label>
+                  <div class="form-group row mb-2">
+                    <label class="col-md-4 col-form-label text-md-end">Current 2nd Mtg Bal:</label>
                     <input type="number" step="0.01" name="current2ndMtgBal" class="form-control" />
                   </div>
-                  <div class="form-group mb-2 text-start">
-                    <label class="form-label">Current 2nd Mtg Rate:</label>
+                  <div class="form-group row mb-2">
+                    <label class="col-md-4 col-form-label text-md-end">Current 2nd Mtg Rate:</label>
                     <input type="number" step="0.01" name="current2ndMtgRate" class="form-control" />
                   </div>
-                  <div class="form-group mb-2 text-start">
-                    <label class="form-label">Current P & I or IO Pymt 2nd:</label>
+                  <div class="form-group row mb-2">
+                    <label class="col-md-4 col-form-label text-md-end">Current P & I or IO Pymt 2nd:</label>
                     <input type="number" step="0.01" name="currentPandIorIOPymt2nd" class="form-control" />
                   </div>
-                  <div class="form-group mb-2 text-start">
-                    <label class="form-label">Total PITI 1st & 2nd:</label>
+                  <div class="form-group row mb-2">
+                    <label class="col-md-4 col-form-label text-md-end">Total PITI 1st & 2nd:</label>
                     <input type="number" step="0.01" name="totalPITI1st2nd" class="form-control" />
                   </div>
-                  <div class="form-group mb-2 text-start">
-                    <label class="form-label">Total P&I & MI on 1st & 2nd & Other Debt:</label>
+                  <div class="form-group row mb-2">
+                    <label class="col-md-4 col-form-label text-md-end">Total P&I & MI on 1st & 2nd & Other Debt:</label>
                     <input type="number" step="0.01" name="totalPandIMI1st2ndOtherDebt" class="form-control" />
                   </div>
-                  <div class="form-group mb-2 text-start">
-                    <label class="form-label">Bal of "Other" Debts to Payoff:</label>
+                  <div class="form-group row mb-2">
+                    <label class="col-md-4 col-form-label text-md-end">Bal of "Other" Debts to Payoff:</label>
                     <input type="number" step="0.01" name="balOfOtherDebtsToPayoff" class="form-control" />
                   </div>
-                  <div class="form-group mb-2 text-start">
-                    <label class="form-label">Mo. Pymt of "Other" Debt to payoff:</label>
+                  <div class="form-group row mb-2">
+                    <label class="col-md-4 col-form-label text-md-end">Mo. Pymt of "Other" Debt to payoff:</label>
                     <input type="number" step="0.01" name="moPymtOfOtherDebtToPayoff" class="form-control" />
                   </div>
-                  <div class="form-group mb-2 text-start">
-                    <label class="form-label">Last Payment Date:</label>
+                  <div class="form-group row mb-2">
+                    <label class="col-md-4 col-form-label text-md-end">Last Payment Date:</label>
                     <input type="text" name="lastPaymentDate" class="form-control" />
                   </div>
-                  <div class="form-group mb-2 text-start">
-                    <label class="form-label">Est. Closing Date:</label>
+                  <div class="form-group row mb-2">
+                    <label class="col-md-4 col-form-label text-md-end">Est. Closing Date:</label>
                     <input type="text" name="estClosingDate" class="form-control" />
                   </div>
-                  <div class="form-group mb-2 text-start">
-                    <label class="form-label">Funding Date:</label>
+                  <div class="form-group row mb-2">
+                    <label class="col-md-4 col-form-label text-md-end">Funding Date:</label>
                     <input type="text" name="fundingDate" class="form-control" />
                   </div>
-                  <div class="form-group mb-2 text-start">
-                    <label class="form-label">Month end:</label>
+                  <div class="form-group row mb-2">
+                    <label class="col-md-4 col-form-label text-md-end">Month end:</label>
                     <input type="text" name="monthEnd" class="form-control" />
                   </div>
-                  <div class="form-group mb-2 text-start">
-                    <label class="form-label">No Payment Due Month:</label>
+                  <div class="form-group row mb-2">
+                    <label class="col-md-4 col-form-label text-md-end">No Payment Due Month:</label>
                     <input type="text" name="noPaymentDueMonth" class="form-control" />
                   </div>
-                  <div class="form-group mb-2 text-start">
-                    <label class="form-label">1st Payment due date:</label>
+                  <div class="form-group row mb-2">
+                    <label class="col-md-4 col-form-label text-md-end">1st Payment due date:</label>
                     <input type="text" name="firstPaymentDueDate" class="form-control" />
                   </div>
-                  <div class="form-group mb-2 text-start">
-                    <label class="form-label">Est Escrow Refund (be conservative):</label>
+                  <div class="form-group row mb-2">
+                    <label class="col-md-4 col-form-label text-md-end">Est Escrow Refund (be conservative):</label>
                     <input type="number" step="0.01" name="estEscrowRefund" class="form-control" />
                   </div>
-                  <div class="form-group mb-2 text-start">
-                    <label class="form-label">Appraised Value:</label>
+                  <div class="form-group row mb-2">
+                    <label class="col-md-4 col-form-label text-md-end">Appraised Value:</label>
                     <input type="number" step="0.01" name="appraisedValue" class="form-control" />
                   </div>
-                  <div class="form-group mb-2 text-start">
-                    <label class="form-label">FICO:</label>
+                  <div class="form-group row mb-2">
+                    <label class="col-md-4 col-form-label text-md-end">FICO:</label>
                     <input type="number" name="fico" class="form-control" />
                   </div>
-                  <div class="form-group mb-2 text-start">
-                    <label class="form-label">Loan Purpose:</label>
+                  <div class="form-group row mb-2">
+                    <label class="col-md-4 col-form-label text-md-end">Loan Purpose:</label>
                     <input type="text" name="loanPurpose" class="form-control" />
                   </div>
-                  <div class="form-group mb-2 text-start">
-                    <label class="form-label">Occupancy:</label>
+                  <div class="form-group row mb-2">
+                    <label class="col-md-4 col-form-label text-md-end">Occupancy:</label>
                     <input type="text" name="occupancy" class="form-control" />
                   </div>
-                  <div class="form-group mb-2 text-start">
-                    <label class="form-label">New Interest Rate:</label>
+                  <div class="form-group row mb-2">
+                    <label class="col-md-4 col-form-label text-md-end">New Interest Rate:</label>
                     <input type="number" step="0.01" name="newInterestRate" class="form-control" />
                   </div>
-                  <div class="form-group mb-2 text-start">
-                    <label class="form-label">PropertyType:</label>
+                  <div class="form-group row mb-2">
+                    <label class="col-md-4 col-form-label text-md-end">PropertyType:</label>
                     <input type="text" name="propertyType" class="form-control" />
                   </div>
-                  <div class="form-group mb-2 text-start">
-                    <label class="form-label">What type of loan is this?</label>
+                  <div class="form-group row mb-2">
+                    <label class="col-md-4 col-form-label text-md-end">What type of loan is this?</label>
                     <input type="text" name="loanType" class="form-control" />
                   </div>
-                  <div class="form-group mb-2 text-start">
-                    <label class="form-label">Original MIP:</label>
+                  <div class="form-group row mb-2">
+                    <label class="col-md-4 col-form-label text-md-end">Original MIP:</label>
                     <input type="number" step="0.01" name="originalMIP" class="form-control" />
                   </div>
-                  <div class="form-group mb-2 text-start">
-                    <label class="form-label">Refund of Original MIP:</label>
+                  <div class="form-group row mb-2">
+                    <label class="col-md-4 col-form-label text-md-end">Refund of Original MIP:</label>
                     <input type="number" step="0.01" name="refundOfOriginalMIP" class="form-control" />
                   </div>
               </div>
@@ -178,29 +178,29 @@
             <div class="card" style="background-color: #f8f9fa; border: 1px solid #000; border-radius: 8px;">
               <div class="card-body">
                 <h4 class="mb-2">Monthly Details</h4>
-                <div class="form-group mb-2 text-start">
-                  <label class="form-label">Principle:</label>
+                <div class="form-group row mb-2">
+                  <label class="col-md-4 col-form-label text-md-end">Principle:</label>
                   <div class="input-group">
                     <span class="input-group-text">$</span>
                     <input type="number" step="0.01" name="principle" class="form-control" value="<%= row.principle.toFixed(2) %>" required min="0" style="background-color: #ffa07a;" />
                   </div>
                 </div>
-                <div class="form-group mb-2 text-start">
-                  <label class="form-label">Interest:</label>
+                <div class="form-group row mb-2">
+                  <label class="col-md-4 col-form-label text-md-end">Interest:</label>
                   <div class="input-group">
                     <span class="input-group-text">$</span>
                     <input type="number" step="0.01" name="interest" class="form-control" value="<%= row.interest.toFixed(2) %>" required min="0" style="background-color: #ffa07a;" />
                   </div>
                 </div>
-                <div class="form-group mb-2 text-start">
-                  <label class="form-label">Taxes:</label>
+                <div class="form-group row mb-2">
+                  <label class="col-md-4 col-form-label text-md-end">Taxes:</label>
                   <div class="input-group">
                     <span class="input-group-text">$</span>
                     <input type="number" step="0.01" class="form-control" value="<%= row.taxes.toFixed(2) %>" readonly style="background-color: #ffffe0;" />
                   </div>
                 </div>
-                <div class="form-group mb-2 text-start">
-                  <label class="form-label">Insurance:</label>
+                <div class="form-group row mb-2">
+                  <label class="col-md-4 col-form-label text-md-end">Insurance:</label>
                   <div class="input-group">
                     <span class="input-group-text">$</span>
                     <input type="number" step="0.01" class="form-control" value="<%= row.insurance.toFixed(2) %>" readonly style="background-color: #ffffe0;" />

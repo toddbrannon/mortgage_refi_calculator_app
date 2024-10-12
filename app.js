@@ -9,14 +9,14 @@ app.use(express.static('public'));
 
 // In-memory data representation of the Input Tab
 let inputData = [
-  { borrowerName: "John Doe", current1stMortgageBal: 626417.51, current1stMtgRate: 0.075, principle: 0, interest: 0, taxes: 0, insurance: 0, currentPITI1stMtg: 0, currentPandIorIOPayment: 0 },
+  { borrowerName: "John Doe", current1stMortgageBal: 626417.51, current1stMtgRate: 0.075, principle: 0, interest: 0, taxes: 0, insurance: 0, currentPITI1stMtg: 0, currentPandIorIOPayment: 0, currentMonthlyMI: 0, currentAnnualTaxes: 0, currentAnnualInsurance: 0 },
   // Additional rows can be added here
 ];
 
 // Route to display form
 app.get('/', (req, res) => {
   const currentDate = new Date().toLocaleDateString();
-  res.render('index', { data: inputData, currentDate });
+  res.render('index copy', { data: inputData, currentDate });
 });
 
 // Route to handle form submission
@@ -32,7 +32,10 @@ app.post('/update', (req, res) => {
     taxes: inputData[id].taxes, // Keeping calculated fields the same
     insurance: inputData[id].insurance, // Keeping calculated fields the same
     currentPITI1stMtg: inputData[id].currentPITI1stMtg, // Keeping calculated fields the same
-    currentPandIorIOPayment: inputData[id].currentPandIorIOPayment // Keeping calculated fields the same
+    currentPandIorIOPayment: inputData[id].currentPandIorIOPayment, // Keeping calculated fields the same
+    currentMonthlyMI: inputData[id].currentMonthlyMI, // Keeping calculated fields the same
+    currentAnnualTaxes: inputData[id].currentAnnualTaxes, // Keeping calculated fields the same
+    currentAnnualInsurance: inputData[id].currentAnnualInsurance // Keeping calculated fields the same
   };
   res.redirect('/');
 });
