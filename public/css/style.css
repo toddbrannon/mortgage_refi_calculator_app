@@ -101,6 +101,7 @@ input[type="number"]::placeholder {
   box-sizing: border-box; /* Includes padding and border in the width */
   flex: 1;
   max-width: 20%;
+  height: 24px; /* Adjust this value as needed */
 }
 
 select.form-control {
@@ -219,12 +220,21 @@ select.placeholder-option option:disabled {
 }
 
 /* Styling for IFW columns layout */
-.ifw-row {
+/* .ifw-row {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   gap: 20px;
   margin-bottom: 20px;
+} */
+
+.ifw-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr; /* Explicitly define four equal-width columns */
+  gap: 20px;
+  align-items: start; /* Align items to start */
+  margin-bottom: 20px;
 }
+
 
 .ifw-column {
   display: flex;
@@ -232,12 +242,42 @@ select.placeholder-option option:disabled {
   gap: 10px;
 }
 
+.ifw-labels {
+  text-align: right;
+  padding-right: 10px;
+  font-size: .8em;
+}
+
+.ifw-values {
+  text-align: left;
+  padding-left: 10px;
+  font-size: .8em;
+}
 .ifw-funding-column {
   font-weight: bold;
 }
 
 .ifw-funding-value-column {
   text-align: center;
+}
+
+/* Grouped row styling for IFW sections */
+.ifw-group {
+  margin-bottom: 20px;
+}
+
+.ifw-payoff {
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+
+.ifw-group .ifw-column {
+  margin-bottom: 10px;
+}
+
+.ifw-group p {
+  margin-bottom: 0px;
+  margin-top: 0px;
 }
 
 
