@@ -21,7 +21,7 @@ app.get('/', (req, res) => {
 
 // Route to handle form submission
 app.post('/update', (req, res) => {
-  const { id, borrowerName, current1stMortgageBal, current1stMtgRate, principle, interest } = req.body;
+  const { id, borrowerName, current1stMortgageBal, current1stMtgRate, principle, interest, annualTaxes } = req.body;
   // Update in-memory data
   inputData[id] = {
     borrowerName,

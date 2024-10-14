@@ -48,24 +48,28 @@ h1, h2 {
 
 .form-group {
   display: flex;
-  align-items: center; /* Align items vertically */
-  width: 100%; /* Ensure the form group takes the full width */
-  gap: 10px; /* Add some spacing between the label and input */
-  margin-bottom: 5px;
+  align-items: center;
+  gap: 10px;
+  /* width: 100%; */
+  margin-bottom: 20px;
 }
 
 .form-group label {
-  flex: 2; /* Allow label to take 2/3 of the space */
-  max-width: 35%; /* Limit to 2/3 width */
-  font-weight: 500;
-  margin-bottom: 5px;
-  font-size: .8em;
+  flex: 0 0 30%; /* Allow label to take 2/3 of the space */
+  max-width: 30%; /* Adjust as needed */
+  text-align: right;
+  padding-right: 10px;
 }
+
+.form-group .form-control {
+  flex: 1; /* Allow input and select to take the remaining 1/3 of the space */
+}
+
 
 .form-group .input-group,
 .form-group input {
   flex: 1; /* Allow input to take 1/3 of the space */
-  max-width: 15%; /* Limit to 1/3 width */
+  max-width: 20%; /* Limit to 1/3 width */
   padding: 10px;
   border: 1px solid #ccc;
   border-radius: 4px;
@@ -87,6 +91,37 @@ input[type="number"]::placeholder {
   color: #888;  /* Subtle placeholder color */
   font-style: italic;
 }
+
+.form-control {
+  width: 100%; /* Make sure both input and select use the full available space */
+  padding: 10px; /* Matches the padding of inputs */
+  font-size: 0.8em; /* Ensures consistent text size */
+  border: 1px solid #ccc; /* Same border as other inputs */
+  border-radius: 4px; /* Matches the rounded corners */
+  box-sizing: border-box; /* Includes padding and border in the width */
+  flex: 1;
+  max-width: 20%;
+}
+
+select.form-control {
+  -webkit-appearance: none; /* Ensures consistency in appearance across browsers */
+  -moz-appearance: none; /* For Firefox */
+  appearance: none; /* Removes the default dropdown styling */
+  width: 100%; /* Ensures consistent width with input */
+}
+
+.placeholder-option option[value=""] {
+  color: lightgrey; /* Placeholder text in light grey */
+}
+
+select.placeholder-option {
+  color: #000; /* Default color for other options */
+}
+
+select.placeholder-option option:disabled {
+  color: lightgrey; /* Placeholder remains light grey */
+}
+
 
 .submit-btn {
   width: auto;  /* Adjust button to not be full width */
@@ -152,4 +187,8 @@ input[type="number"]::placeholder {
 
 .red-bg {
   background-color: rgba(255, 0, 0, 0.5);
+}
+
+.no-show-input {
+  visibility: hidden;
 }
