@@ -16,7 +16,7 @@ let inputData = [
 // Route to display form
 app.get('/', (req, res) => {
   const currentDate = new Date().toLocaleDateString();
-  res.render('index_flex', { data: inputData, currentDate });
+  res.render('index_tabs', { data: inputData, currentDate });
 });
 
 // Route to handle form submission

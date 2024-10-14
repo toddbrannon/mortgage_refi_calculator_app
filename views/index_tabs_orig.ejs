@@ -1,0 +1,328 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="/css/style.css">
+  <title>Mortgage Data Input</title>
+</head>
+<body>
+  <div class="container">
+    <h1>RFBD Rebuild IFW</h1>
+    <div class="tabs">
+      <div class="tab active">Input</div>
+      <div class="tab">IFW</div>
+      <div class="tab">REFI Checker</div>
+    </div>
+  
+    <div class="tab-content active" id="input-form">
+    <div class="form-content">
+    <p>Date: <%= currentDate %></p>
+    <form action="/update" method="POST" onsubmit="return validateForm()">
+      <% data.forEach((row, index) => { %>
+        <div class="form-section">
+          <div class="card">
+            <div class="card-header">
+              <h2>Basic Details</h2>
+            </div>
+            <div class="card-body">
+              <div class="form-group">
+                <label for="borrowerName-<%= index %>">Borrower Name:</label>
+                <input type="text" class="orange-bg borrower-name" id="borrowerName-<%= index %>" name="borrowerName" value="<%= row.borrowerName %>" required />
+              </div>
+              <div class="form-group">
+                <label for="current1stMortgageBal-<%= index %>">Current 1st Mortgage Balance:</label>
+                <input type="number" class="form-control orange-bg" id="current1stMortgageBal-<%= index %>" name="current1stMortgageBal" step="0.01" value="<%= row.current1stMortgageBal.toFixed(2) %>" required min="0" placeholder="$" />
+              </div>
+              <div class="form-group">
+                <label for="current1stMtgRate-<%= index %>">Current 1st Mortgage Rate:</label>
+                <input type="number" class="form-control orange-bg" id="current1stMtgRate-<%= index %>" name="current1stMtgRate" step="0.01" value="<%= row.current1stMtgRate %>" required min="0" max="100" placeholder="%" />
+              </div>
+              <!-- Additional form fields go here following the same pattern -->
+              <div class="form-group">
+                  <label for="currentPITI1stMtg-<%= index %>" class="col-md-4 col-form-label text-md-end"><u><i>Current P I T I 1st Mtg.</i></u>:</label>
+
+                  <input type="number" id="currentPITI1stMtg-<%= index %>" name="currentPITI1stMtg-<%= index %>" step="0.01" class="form-control" value="<%= row.currentPITI1stMtg.toFixed(2) %>" readonly />
+
+              </div>
+              <div class="form-group">
+                <label for="currentPandIorIOPayment-<%= index %>" class="col-md-4 col-form-label text-md-end">Current P & I or IO Pymt 1st Mtg.:</label>
+                
+                  <input type="number" id="currentPandIorIOPayment-<%= index %>" name="currentPandIorIOPayment-<%= index %>" step="0.01" class="form-control" value="<%= row.currentPandIorIOPayment.toFixed(2) %>" readonly />
+                
+              </div>
+              <div class="form-group">
+                <label for="currentMonthlyMI-<%= index %>" class="col-md-4 col-form-label text-md-end">Current Monthly Mortgage Ins (MI):</label>
+                
+                  <input type="number" class="form-control pale-yellow-bg" id="currentMonthlyMI-<%= index %>" name="currentMonthlyMI-<%= index %>" step="0.01" class="form-control" value="<%= row.currentMonthlyMI ? row.currentMonthlyMI.toFixed(2) : '0.00' %>" readonly />
+                
+              </div>
+              <div class="form-group">
+                <label for="currentAnnualTaxes-<%= index %>" class="col-md-4 col-form-label text-md-end">Current Annual Taxes:</label>           
+                  <input type="number" class="form-control grey-bg" id="currentMonthlyTaxes-<%= index %>" name="currentMonthlyTaxes-<%= index %>" step="0.01" class="form-control" value="<%= row.currentMonthlyTaxes ? row.currentMonthlyTaxes.toFixed(2) : '0.00' %>" readonly />
+                  <input type="number" class="form-control pale-yellow-bg" id="currentAnnualTaxes-<%= index %>" name="currentAnnualTaxes-<%= index %>" step="0.01" class="form-control" value="<%= row.currentAnnualTaxes ? row.currentAnnualTaxes.toFixed(2) : '0.00' %>" readonly />
+              </div>
+              <div class="form-group">
+                <label for="currentAnnualInsurance-<%= index %>" class="col-md-4 col-form-label text-md-end">Current Annual Insurance:</label> 
+                <input type="number" class="form-control grey-bg" id="currentMonthlyInsurance-<%= index %>" name="currentMonthlyInsurance-<%= index %>" step="0.01" class="form-control" value="<%= row.currentMonthlyInsurance ? row.currentMonthlyInsurance.toFixed(2) : '0.00' %>" readonly />
+                <input type="number" class="form-control pale-yellow-bg" id="currentAnnualInsurance-<%= index %>" name="currentAnnualInsurance-<%= index %>" step="0.01" class="form-control" value="<%= row.currentAnnualInsurance ? row.currentAnnualInsurance.toFixed(2) : '0.00' %>" readonly />
+              </div>
+              <div class="form-group">
+                <label for="currentInsPolicyEffDate-<%= index %>" class="col-md-4 col-form-label text-md-end">Current Ins Policy Eff. Date:</label>
+                <input type="text" id="currentInsPolicyEffDate-<%= index %>" name="currentInsPolicyEffDate-<%= index %>" class="form-control" />
+              </div>
+              <div class="form-group">
+                <label for="current2ndMtgBal-<%= index %>" class="col-md-4 col-form-label text-md-end">Current 2nd Mtg Bal:</label>
+                <input type="number" class="pale-yellow-bg form-control" id="current2ndMtgBal-<%= index %>" name="current2ndMtgBal-<%= index %>" step="0.01"  />
+              </div>
+              <div class="form-group">
+                <label for="current2ndMtgRate-<%= index %>" class="col-md-4 col-form-label text-md-end">Current 2nd Mtg Rate:</label>
+                <input type="number" class="pale-yellow-bg form-control" id="current2ndMtgRate-<%= index %>" name="current2ndMtgRate-<%= index %>" step="0.01"  />
+              </div>
+              <div class="form-group">
+                <label for="currentPandIorIOPymt2nd-<%= index %>" class="col-md-4 col-form-label text-md-end">Current P & I or IO Pymt 2nd:</label>
+                <input type="number" class="pale-yellow-bg form-control" id="currentPandIorIOPymt2nd-<%= index %>" name="currentPandIorIOPymt2nd-<%= index %>" step="0.01" />
+              </div>
+              <div class="form-group">
+                <label for="totalPITI1st2nd-<%= index %>" class="col-md-4 col-form-label text-md-end">Total PITI 1st & 2nd:</label>
+                <input type="number" class="grey-bg form-control" id="totalPITI1st2nd-<%= index %>" name="totalPITI1st2nd-<%= index %>" step="0.01" />
+              </div>
+              <div class="form-group">
+                <label for="totalPandIMI1st2ndOtherDebt-<%= index %>" class="col-md-4 col-form-label text-md-end">Total P&I & MI on 1st & 2nd & Other Debt:</label>
+                <input type="number" class="grey-bg form-control" id="totalPandIMI1st2ndOtherDebt-<%= index %>" name="totalPandIMI1st2ndOtherDebt-<%= index %>" step="0.01" />
+              </div>
+              <div class="form-group">
+                <label for="balOfOtherDebtsToPayoff" class="col-md-4 col-form-label text-md-end">Bal of "Other" Debts to Payoff:</label>
+                <input type="number" class="form-control pale-yellow-bg" id="balOfOtherDebtsToPayoff" name="balOfOtherDebtsToPayoff" step="0.01" />
+              </div>
+              <div class="form-group">
+                <label for="moPymtOfOtherDebtToPayoff" class="col-md-4 col-form-label text-md-end">Mo. Pymt of "Other" Debt to payoff:</label>
+                <input type="number" class="form-control pale-yellow-bg" id="moPymtOfOtherDebtToPayoff" name="moPymtOfOtherDebtToPayoff" step="0.01" />
+              </div>
+              <div class="form-group">
+                <label for="lastPaymentDate" class="col-md-4 col-form-label text-md-end">Last Payment Date:</label>
+                <input type="text" class="form-control bright-yellow-bg" id="lastPaymentDate" name="lastPaymentDate" />
+              </div>
+              <div class="form-group">
+                <label for="estClosingDate" class="col-md-4 col-form-label text-md-end">Est. Closing Date:</label>
+                <input type="text" class="form-control bright-yellow-bg" id="estClosingDate" name="estClosingDate" />
+              </div>
+              <div class="form-group">
+                <label for="fundingDate" class="col-md-4 col-form-label text-md-end">Funding Date:</label>
+                <input type="text" class="form-control pale-yellow-bg" id="fundingDate" name="fundingDate" />
+              </div>
+              <div class="form-group">
+                <label for="monthEnd" class="col-md-4 col-form-label text-md-end">Month end:</label>
+                <input type="text" class="form-control pale-yellow-bg" id="monthEnd" name="monthEnd"/>
+              </div>
+              <div class="form-group">
+                <label for="noPaymentDueMonth" class="col-md-4 col-form-label text-md-end">No Payment Due Month:</label>
+                <input type="text" class="form-control pale-yellow-bg" id="noPaymentDueMonth" name="noPaymentDueMonth"/>
+              </div>
+              <div class="form-group">
+                <label for="firstPaymentDueDate" class="col-md-4 col-form-label text-md-end">1st Payment due date:</label>
+                <input type="text" class="form-control pale-yellow-bg" id="firstPaymentDueDate" name="firstPaymentDueDate"/>
+              </div>
+              <div class="form-group">
+                <label for="estEscrowRefund" class="col-md-4 col-form-label text-md-end">Est Escrow Refund (be conservative):</label>
+                <input type="number" class="form-control bright-yellow-bg" id="estEscrowRefund" name="estEscrowRefund" step="0.01"/>
+              </div>
+              <div class="form-group">
+                <label for="appraisedValue" class="col-md-4 col-form-label text-md-end">Appraised Value:</label>
+                <input type="number" class="form-control pale-yellow-bg" id="appraisedValue" name="appraisedValue" step="0.01"/>
+              </div>
+              <div class="form-group">
+                <label for="fico" class="col-md-4 col-form-label text-md-end">FICO:</label>
+                <input type="number" class="form-control bright-yellow-bg" id="fico" name="fico"/>
+              </div>
+              <div class="form-group">
+                <label for="loanPurpose-<%= index %>" class="col-md-4 col-form-label text-md-end">Loan Purpose:</label>
+                <select id="loanPurpose-<%= index %>" name="loanPurpose-<%= index %>" class="form-control placeholder-option">
+                  <option value="" disabled selected style="color: lightgrey;">Select</option>
+                  <option value="Purchase">Purchase</option>
+                  <option value="Rate/Term Refinance">Rate/Term Refinance</option>
+                  <option value="Cash Out Refinance">Cash Out Refinance</option>
+                </select>
+              </div>
+              <div class="form-group">
+                <label for="occupancy-<%= index %>" class="col-md-4 col-form-label text-md-end">Occupancy:</label>
+                <select id="occupancy-<%= index %>" name="occupancy-<%= index %>" class="form-control placeholder-option">
+                  <option value="" disabled selected style="color: lightgrey;">Select</option>
+                  <option value="Primary">Primary</option>
+                  <option value="Second Home">Second Home</option>
+                  <option value="Investment">Investment</option>
+                </select>
+              </div>
+              <div class="form-group">
+                <label for="newInterestRate" class="col-md-4 col-form-label text-md-end">New Interest Rate:</label>
+                <input type="number" class="form-control bright-yellow-bg"  id="newInterestRate" name="newInterestRate" step="0.01" />
+              </div>
+              <div class="form-group">
+                <label for="propertyType-<%= index %>" class="col-md-4 col-form-label text-md-end">Property Type:</label>
+                <select id="propertyType-<%= index %>" name="propertyType-<%= index %>" class="form-control placeholder-option">
+                  <option value="" disabled selected style="color: lightgrey;">Select</option>
+                  <option value="Single Family">Single Family</option>
+                  <option value="PUD">PUD</option>
+                  <option value="Condo">Condo</option>
+                </select>
+              </div>
+              <div class="form-group">
+                <label for="loanType-<%= index %>" class="col-md-4 col-form-label text-md-end">What type of loan is this?</label>
+                <select id="loanType-<%= index %>" name="loanType-<%= index %>" class="bright-yellow-bg form-control placeholder-option">
+                  <option value="" disabled selected style="color: lightgrey;">Select</option>
+                  <option value="CONV">CONV</option>
+                  <option value="FHA">FHA</option>
+                  <option value="VA">VA</option>
+                </select>
+              </div>
+              <div class="form-group">
+                <label for="originalMIP" class="col-md-4 col-form-label text-md-end">Original MIP:</label>
+                <input type="number" id="originalMIP" name="originalMIP" step="0.01" class="form-control" />
+              </div>
+              <div class="form-group">
+                <label for="refundOfOriginalMIP" class="col-md-4 col-form-label text-md-end">Refund of Original MIP:</label>
+                <input type="number" id="refundOfOriginalMIP" name="refundOfOriginalMIP" step="0.01" class="form-control" />
+              </div>
+            </div>
+          </div>
+          <div class="card">
+            <div class="card-header">
+              <h2>Monthly Details</h2>
+            </div>
+            <div class="card-body">
+              <div class="form-group">
+                <label for="principle-<%= index %>">Principle:</label>
+                <input type="number" class="orange-bg form-control" id="principle-<%= index %>" name="principle" step="0.01" value="<%= row.principle.toFixed(2) %>" required min="0" placeholder="$" />
+              </div>
+              <div class="form-group">
+                <label for="interest-<%= index %>">Interest:</label>
+                <input type="number" class="orange-bg form-control" id="interest-<%= index %>" name="interest" step="0.01" value="<%= row.interest.toFixed(2) %>" required min="0" placeholder="$" />
+              </div>
+              <div class="form-group">
+                <label for="monthlyTaxes-<%= index %>">Taxes:</label>
+                <input type="number" class="pale-yellow-bg form-control" id="monthlyTaxes-<%= index %>" name="monthlyTaxes" step="0.01" value="<%= row.monthlyTaxes ? row.monthlyTaxes.toFixed(2) : '0.00' %>" required min="0" placeholder="$" />
+                <input type="number" class="form-control" id="escrowMinusTaxes-<%= index %>" name="escrowMinusTaxes" step="0.01" value="<%= row.escrowMinusTaxes ? row.escrowMinusTaxes.toFixed(2) : '0.00' %>" required min="0" placeholder="$" />
+                <input type="number" class="form-control bright-yellow-bg" id="annualTaxes-<%= index %>" name="annualTaxes" step="0.01" value="<%= row.annualTaxes ? row.annualTaxes.toFixed(2) : '0.00' %>" required min="0" placeholder="$" />
+              </div>
+              <div class="form-group">
+                <label for="monthlyInsurance-<%= index %>">Insurance:</label>
+                <input type="number" class="pale-yellow-bg form-control" id="monthlyInsurance-<%= index %>" name="monthlyInsurance" step="0.01" value="<%= row.monthlyInsurance ? row.monthlyInsurance.toFixed(2) : '0.00' %>" required min="0" placeholder="$" />
+                <input type="number" class="form-control no-show-input" id="noShowInput-<%= index %>" name="noShowInput" step="0.01" value="<%= row.noShowInput ? row.noShowInput.toFixed(2) : '0.00' %>" required min="0" placeholder="$" />
+                <input type="number" class="form-control" id="annualInsurance-<%= index %>" name="annualInsurance" step="0.01" value="<%= row.annualInsurance ? row.annualInsurance.toFixed(2) : '0.00' %>" required min="0" placeholder="$" />
+              </div>
+              <!-- Additional monthly details fields go here following the same pattern -->
+              
+          </div>
+        </div>
+      <% }) %>
+      <div class="button-container-form">
+        <button type="submit" class="submit-btn">Save Changes</button>
+        <button type="button" class="submit-btn clear-btn">Clear Form</button> <!-- New Clear Form Button -->
+      </div>
+    </div>
+    
+    </form>
+    
+    </div>
+    <div class="button-container next-button-container">
+  <button type="button" class="submit-btn next-btn">Next</button>
+</div>
+
+  
+    <div class="tab-content" id="ifw-form">
+      <div class="form-content">
+        <p>IFW content goes here...</p>
+      </div>
+      <div class="button-container">
+        <button type="button" class="submit-btn back-btn">Back</button>
+        <button type="button" class="submit-btn next-btn">Next</button>
+      </div>
+    </div>
+  
+    <div class="tab-content" id="refi-checker-form">
+      <div class="form-content">
+        <p>REFI Checker content goes here...</p>
+      </div>
+      <div class="button-container">
+        <button type="button" class="submit-btn back-btn">Back</button>
+      </div>
+    </div>
+  </div>
+  <script>
+
+    function validateForm() {
+      const borrowerName = document.querySelector('input[name="borrowerName"]').value;
+      const current1stMortgageBal = parseFloat(document.querySelector('input[name="current1stMortgageBal"]').value);
+      const current1stMtgRate = parseFloat(document.querySelector('input[name="current1stMtgRate"]').value);
+      const principle = parseFloat(document.querySelector('input[name="principle"]').value);
+      const interest = parseFloat(document.querySelector('input[name="interest"]').value);
+      const annualTaxes = parseFloat(document.querySelector('input[name="annualTaxes"]').value);
+
+      if (borrowerName.trim() === "") {
+        alert("Borrower Name is required.");
+        return false;
+      }
+
+      if (isNaN(current1stMortgageBal) || current1stMortgageBal < 0) {
+        alert("Please enter a valid Mortgage Balance greater than or equal to 0.");
+        return false;
+      }
+
+      if (isNaN(current1stMtgRate) || current1stMtgRate < 0 || current1stMtgRate > 100) {
+        alert("Please enter a valid Mortgage Rate between 0 and 100.");
+        return false;
+      }
+
+      if (isNaN(principle) || principle < 0) {
+        alert("Please enter a valid Principle amount greater than or equal to 0.");
+        return false;
+      }
+
+      if (isNaN(interest) || interest < 0) {
+        alert("Please enter a valid Interest amount greater than or equal to 0.");
+        return false;
+      }
+
+      if (isNaN(annualTaxes) || annualTaxes < 0) {
+        alert("Please enter a valid annual taxes amount greater than or equal to 0.");
+        return false;
+      }
+
+      return true;
+    }
+
+    document.addEventListener("DOMContentLoaded", function () {
+    // Get all inputs that have "Date" in the label
+    document.querySelectorAll('input').forEach(function (input) {
+      if (input.previousElementSibling && input.previousElementSibling.textContent.includes("Date")) {
+        input.addEventListener("input", function (event) {
+          let value = input.value.replace(/\D/g, ""); // Remove any non-digit characters
+          if (value.length > 2 && value.length <= 4) {
+            input.value = value.slice(0, 2) + "/" + value.slice(2);
+          } else if (value.length > 4) {
+            input.value = value.slice(0, 2) + "/" + value.slice(2, 4) + "/" + value.slice(4, 8);
+          } else {
+            input.value = value;
+          }
+        });
+      }
+    });
+  });
+  document.addEventListener("DOMContentLoaded", function () {
+    const tabs = document.querySelectorAll(".tab");
+    const tabContents = document.querySelectorAll(".tab-content");
+
+    tabs.forEach((tab, index) => {
+      tab.addEventListener("click", function () {
+        tabs.forEach(t => t.classList.remove("active"));
+        tabContents.forEach(tc => tc.classList.remove("active"));
+
+        tab.classList.add("active");
+        tabContents[index].classList.add("active");
+      });
+    });
+  });
+  </script>
+  <script src="/js/calculations.js"></script>
+</body>
+</html>
